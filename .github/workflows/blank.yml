@@ -1,0 +1,35 @@
+name: Publish Markdown to Confluence
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'dokumentace.md'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y nodejs npm
+        npm install -g @mermaid-js/mermaid-cli@9.1.7
+
+    - name: Convert Markdown to HTML with Mermaid support
+      run: |
+        # Převod Markdown do HTML pomocí pandoc a následná aplikace mermaid CLI na diagramy
+        # 1) Vytvoří HTML z markdown (bez mermaid diagramů)
+        # 2) Namávni mermaid diagramy zvlášť a vlož do HTML — (toto je zjednodušená cesta)
+        # Pro jednodušší variantu pouze vložíme skript pro mermaid
+        
+        # převod markdown na html (základní)
+        pandoc dokumentace.md -o dokumentace.html
+        
+        # přidáme mermaid JS a inicializaci (na začátek souboru)
+        sed -i '1i\<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true});</script>' dokumentace.html
