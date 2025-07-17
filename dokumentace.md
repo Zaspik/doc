@@ -2,6 +2,7 @@
 
 ## 1. Úvod
 
+
 **Účel dokumentace:**  
 Stručný popis účelu a rozsahu dokumentace.
 
