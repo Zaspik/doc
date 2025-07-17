@@ -1,4 +1,3 @@
-Šablona dokumentace aplikace v Markdown
 # Dokumentace aplikace: [Název aplikace]
 
 ## 1. Úvod
