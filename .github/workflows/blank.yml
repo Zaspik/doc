@@ -19,7 +19,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y nodejs npm
-        npm install -g @mermaid-js/mermaid-cli@9.1.7
+        sudo apt-get install -y pandoc jq
+        sudo npm install -g @mermaid-js/mermaid-cli@9.1.7
 
     - name: Convert Markdown to HTML with Mermaid support
       run: |
